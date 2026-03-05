@@ -8,9 +8,12 @@ spring:
   kafka:
     bootstrap-servers: 192.100.100.20:9092
     consumer:
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       group-id: abcd-group-1
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.use.type.headers: false
 
 logging:
   level:
